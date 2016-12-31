@@ -15,6 +15,7 @@ app.get('/couchDataAll', function(req, res) {
     var members = [];
     // let info = db.info();
     // let dbs = db.databases();
+    console.log('getting data');
     var test = db.all(function(re, rs) {
         var gots = JSON.parse(rs);
         for (i = 0; i < gots.length; i++) {

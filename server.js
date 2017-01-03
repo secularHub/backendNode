@@ -37,7 +37,7 @@ app.use(require('./anonymous-routes'));
 app.use(require('./protected-routes'));
 app.use(require('./user-routes'));
 
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 3035;
 
 http.createServer(app).listen(port, function(err) {
     console.log('listening in http://localhost:' + port);

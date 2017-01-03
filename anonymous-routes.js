@@ -33,7 +33,7 @@ app.get('/couchGet', function(req, res) {
     });
 });
 app.post('/couchSave', function(req, res1) {
-
+    console.log('saving ' + req.body);
     db.save(req.body._id, req.body, function(err, r1) {
         if (err) {
             console.log(err.json());

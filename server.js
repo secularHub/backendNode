@@ -15,11 +15,12 @@ dotenv.load();
 // old version of line
 // app.use(bodyParser.urlencoded());
 // new version of line
+var path = require('path');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 //app.use(express.bodyParser());
-
+app.use(express.static(path.join(__dirname, 'static')));
 app.use(express.static('static'))
 app.use('/static', express.static('static'))
 app.use(function(err, req, res, next) {

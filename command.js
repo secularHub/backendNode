@@ -2,8 +2,8 @@ var cradle = require('cradle');
 var db = new(cradle.Connection)().database('members');
 const fs = require('fs');
 var arguments = {
-    command: string,
-    file: string
+    command: "",
+    file: ""
 }
 if (array.length < 2) {
     console.log('useage for commands takes 2 arguments');
@@ -21,8 +21,8 @@ process.argv.forEach(function(val, index, array) {
 });
 
 
-if(arguments.command === 'backup'){
-        var members = [];
+if (arguments.command === 'backup') {
+    var members = [];
     // let info = db.info();
     // let dbs = db.databases();
     console.log('backupg up to: ' + arguments.file);
@@ -33,15 +33,14 @@ if(arguments.command === 'backup'){
                 members.push(doc);
             })
         }
-        
+
     })
-    fs.writeFile(arguments.file,JSON.stringify(members));
+    fs.writeFile(arguments.file, JSON.stringify(members));
 }
-if(arguments.command === 'restore'){
+if (arguments.command === 'restore') {
     var data = fs.readFile(arguments.file);
     var members = JSON.parse(data);
-    for(i = 0; i < members.length; i++)
-    {
-        db.save(members[i]._id,JSON.stringify(members[i]));
+    for (i = 0; i < members.length; i++) {
+        db.save(members[i]._id, JSON.stringify(members[i]));
     }
 }

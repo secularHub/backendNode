@@ -1,31 +1,68 @@
+//"use strict";
 var cradle = require('cradle');
 var db = new(cradle.Connection)().database('members');
+var backup = new(cradle.Connection)().database('backup');
+var docs = new(cradle.Connection)().database('docs');
+
 const fs = require('fs');
 var arguments = {
     command: "",
     file: ""
 }
-if (array.length < 2) {
+array = process.argv;
+var users = [{ username: "admin", password: "snowsnake" }]
+
+if (array.length < 3) {
     console.log('useage for commands takes 2 arguments');
-    console.log('current commands are: $node command.js backup filename');
-    console.log('current commands are: $node command.js restore filename');
+    console.log('current commands are: $node command.js backup-to-file filename');
+    console.log('current commands are: $node command.js restore-from-file filename');
+    console.log('current commands are: $node command.js set-admin-password password');
 }
-process.argv.forEach(function(val, index, array) {
+var myargs = {
+    command: "",
+    file: ""
+}
+
+array.forEach(function(val, index, array) {
     console.log(index + ': ' + val);
-    if (index === 1) {
-        arguments.command = val;
+    if (index === 2) {
+        myargs.command = val;
     }
-    if (index === 2 && val.length > 0) {
-        arguments.command = val;
+    if (index === 3 && val.length > 0) {
+        myargs.file = val;
     }
 });
 
+if (myargs.command === 'set-admin-password') {
+    docs.get('users', function(err, data) {
+        if (err) {
+            users.username = "password";
+            users.password = myargs.file; //second argument should be the password
 
-if (arguments.command === 'backup') {
+            docs.save("users", users, function(err, res) {
+                if (err)
+                    console.log(err);
+                else
+                    console.log(JSON.stringify(res));
+            })
+
+        } else {
+            for (i = 0; i < data.length; i++) {
+                if (data[i].username === 'admin')
+                    data[i].password = myargs.file;
+            }
+            docs.push(data);
+        }
+
+    })
+    return;
+}
+
+if (myargs.command === 'backup-to-file') {
     var members = [];
     // let info = db.info();
     // let dbs = db.databases();
-    console.log('backupg up to: ' + arguments.file);
+    console.log('backupg up to: ' + myargs.file);
     var test = db.all(function(re, rs) {
         var gots = JSON.parse(rs);
         for (i = 0; i < gots.length; i++) {
@@ -35,10 +72,10 @@ if (arguments.command === 'backup') {
         }
 
     })
-    fs.writeFile(arguments.file, JSON.stringify(members));
+    fs.writeFile(myargs.file, JSON.stringify(members));
 }
-if (arguments.command === 'restore') {
-    var data = fs.readFile(arguments.file);
+if (myargs.command === 'restore-from-file') {
+    var data = fs.readFile(myargs.file);
     var members = JSON.parse(data);
     for (i = 0; i < members.length; i++) {
         db.save(members[i]._id, JSON.stringify(members[i]));

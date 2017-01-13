@@ -9,6 +9,7 @@ var logger = require('morgan'),
 var app = express();
 
 dotenv.load();
+var apikeys = [];
 
 
 // Parsers//
@@ -23,6 +24,8 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'static')));
 app.use(express.static('static'))
 app.use('/static', express.static('static'))
+
+
 app.use(function(err, req, res, next) {
     if (err.name === 'StatusError') {
         res.send(err.status, err.message);

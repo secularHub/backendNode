@@ -10,7 +10,14 @@ var arguments = {
     file: ""
 }
 array = process.argv;
-var users = [{ username: "admin", password: "snowsnake" }]
+var users = {
+    _id: "users",
+    users: [{
+        _id: 'admin',
+        username: 'admin',
+        password: 'snowsnake'
+    }]
+}
 
 if (array.length < 3) {
     console.log('useage for commands takes 2 arguments');
@@ -39,7 +46,7 @@ if (myargs.command === 'set-admin-password') {
             users.username = "password";
             users.password = myargs.file; //second argument should be the password
 
-            docs.save("users", users, function(err, res) {
+            docs.save('users', users, function(err, res) {
                 if (err)
                     console.log(err);
                 else
@@ -47,11 +54,16 @@ if (myargs.command === 'set-admin-password') {
             })
 
         } else {
-            for (i = 0; i < data.length; i++) {
-                if (data[i].username === 'admin')
-                    data[i].password = myargs.file;
+            for (i = 0; i < data.users.length; i++) {
+                if (data.users[i].username === 'admin')
+                    data.users[i].password = myargs.file;
             }
-            docs.push(data);
+            docs.save(data._id, data, function(err, res) {
+                if (err)
+                    console.log(JSON.stringify(err));
+                else
+                    console.log(JSON.stringify(res));
+            });
         }
 
     })

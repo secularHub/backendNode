@@ -42,7 +42,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use(require('./docs-routes'));
 app.use(require('./anonymous-routes'));
 app.use(require('./protected-routes'));
-app.use(require('./user-routes'));
+//app.use(require('./user-routes'));
 
 var port = process.env.PORT || 8080;
 

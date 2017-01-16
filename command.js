@@ -1,5 +1,7 @@
 //"use strict";
 var cradle = require('cradle');
+var salt = require('./salt.js');
+
 var db = new(cradle.Connection)().database('members');
 var backup = new(cradle.Connection)().database('backup');
 var docs = new(cradle.Connection)().database('docs');
@@ -15,7 +17,7 @@ var users = {
     users: [{
         _id: 'admin',
         username: 'admin',
-        password: 'snowsnake'
+        password: salt.salt('snowsnake').salt
     }]
 }
 
@@ -39,8 +41,10 @@ array.forEach(function(val, index, array) {
         myargs.file = val;
     }
 });
+//"4f8028abdc119d3a42f3f157ed4243e68ed67181ce8454f008c155f4e555a3c1fa3548f1c0765a3b7ccd9a4cd2855ba1faa0ccd0b297deac69b03dc4d549a2ec"
 
 if (myargs.command === 'set-admin-password') {
+    myargs.file = salt.salt(myargs.file).passwordHash;
     docs.get('users', function(err, data) {
         if (err) {
             users.username = "password";

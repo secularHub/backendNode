@@ -1,10 +1,74 @@
 var express = require('express'),
-    quoter = require('./quoter');
+    _ = require('lodash'),
+    config = require('./config'),
+    quoter = require('./quoter'),
+    jwt = require('jsonwebtoken'),
+    salt = require('./salt.js');
 
 var app = module.exports = express.Router();
 
 var cradle = require('cradle');
 var db = new(cradle.Connection)().database('members');
+var cradle = require('cradle');
+var dbd = new(cradle.Connection)().database('docs');
+
+var user = {
+    id: 1,
+    username: 'gonto',
+    password: 'gonto'
+};
+
+function validate(u, p) {
+    dbd.get('users', function(err, doc) {
+        if (err)
+            console.log(err);
+        else {
+            for (i = 0; i < doc.users.length; i++) {
+                if (doc.users[i].username === u && doc.users[i].password === p) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    });
+}
+//"aedd762379ee6235"
+function createToken(user) {
+    return jwt.sign(_.omit(user, 'password'), config.secret, { expiresInMinutes: 60 * 5 });
+}
+
+app.post('/api/login', function(req, res) {
+    console.log("create with: " + req.body.login);
+    var pw = salt.salt(req.body.password).passwordHash;
+    var u = req.body.login;
+    user.password = pw;
+    user.username = u;
+    if (!u || !pw) {
+        return res.status(400).send("You must send the username and the password");
+    }
+    try {
+        dbd.get('users', function(err, doc) {
+            if (err)
+                console.log(err);
+            else {
+                for (i = 0; i < doc.users.length; i++) {
+                    if (doc.users[i].username === u && doc.users[i].password === pw) {
+                        console.log('good pw on signin returning 201');
+                        return res.status(201).send({
+                            id_token: createToken(user)
+                        });
+                    }
+                }
+
+                console.log('valid didn not match a user and pw');
+                return res.status(401).send("The username or password don't match");
+            }
+        });
+
+    } catch (error) {
+        console.log(error);
+    }
+});
 //var db = new (cradel.connection)('74.208.129.62').database('members');
 app.get('/api/random-quote', function(req, res) {
     res.status(200).send(quoter.getRandomOne());

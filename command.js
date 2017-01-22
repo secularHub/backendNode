@@ -47,8 +47,8 @@ if (myargs.command === 'set-admin-password') {
     myargs.file = salt.salt(myargs.file).passwordHash;
     docs.get('users', function(err, data) {
         if (err) {
-            users.username = "password";
-            users.password = myargs.file; //second argument should be the password
+            //users.username = "password";
+            //users.password = myargs.file; //second argument should be the password
 
             docs.save('users', users, function(err, res) {
                 if (err)
@@ -62,6 +62,8 @@ if (myargs.command === 'set-admin-password') {
                 if (data.users[i].username === 'admin')
                     data.users[i].password = myargs.file;
             }
+            if (data.password.length > 0)
+                data.password = "";
             docs.save(data._id, data, function(err, res) {
                 if (err)
                     console.log(JSON.stringify(err));

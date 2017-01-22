@@ -14,7 +14,7 @@ function validate(u, p) {
         if (err)
             console.log(err);
         else {
-            for (i = 0; i < userdata.users.length; i++) {
+            for (i = 0; i < doc.users.length; i++) {
                 if (doc.users[i].username === u && doc.users[i].password === p) {
                     return true;
                 }
@@ -74,21 +74,23 @@ app.post('/sessions/test', function(req, res) {
 });
 app.post('/sessions/login', function(req, res) {
     console.log("create with: " + req.body.login);
-    var pw = salt.saltHashPassword(req.body.password).salt;
-    if (!req.body.login || !pw) {
+    var pw = salt.salt(req.body.password).passwordHash;
+    //var pw = salt.saltHashPassword(req.body.password).salt;
+    if (req.body.username == null || pw == null) {
         return res.status(400).send("You must send the username and the password");
     }
     try {
-        if (validate(req.body.login, pw)) {
-            console.log('good pw on signin returning 201');
-            return res.status(201).send({
-                id_token: createToken(req.body.login)
-            });
-        } else {
-            console.log('valid didn not match a user and pw');
-            return res.status(401).send("The username or password don't match");
-        }
-
+        validate(req.body.username, pw, function(req, validRes) {
+            if (validRes == true) {
+                console.log('good pw on signin returning 201');
+                return res.status(201).send({
+                    id_token: createToken(req.body.login)
+                });
+            } else {
+                console.log('valid didn not match a user and pw');
+                return res.status(401).send("The username or password don't match");
+            }
+        })
     } catch (error) {
         console.log(error);
     }

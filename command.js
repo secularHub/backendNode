@@ -62,8 +62,7 @@ if (myargs.command === 'set-admin-password') {
                 if (data.users[i].username === 'admin')
                     data.users[i].password = myargs.file;
             }
-            if (data.password.length > 0)
-                data.password = "";
+
             docs.save(data._id, data, function(err, res) {
                 if (err)
                     console.log(JSON.stringify(err));

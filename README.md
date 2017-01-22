@@ -1,4 +1,10 @@
-# NODE TODO API
+
+
+##using command.js   run node command.js and it will give you commands to use.
+  *  console.log('useage for commands takes 2 arguments');
+  *  console.log('current commands are: $node command.js backup-to-file filename');
+  *  console.log('current commands are: $node command.js restore-from-file filename');
+  *  console.log('current commands are: $node command.js set-admin-password password');
 
 This is a NodeJS full API that you can use to test with your SPAs or Mobile apps.
 

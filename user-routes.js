@@ -9,17 +9,22 @@ var app = module.exports = express.Router();
 var cradle = require('cradle');
 var db = new(cradle.Connection)().database('docs');
 
-function validate(u, p) {
+function validate(u, p, res) {
     db.get('users', function(err, doc) {
         if (err)
             console.log(err);
         else {
             for (i = 0; i < doc.users.length; i++) {
                 if (doc.users[i].username === u && doc.users[i].password === p) {
-                    return true;
+                    console.log('good pw on signin returning 201');
+                    return res.status(201).send({
+                        id_token: createToken(u)
+                    });
+
                 }
             }
-            return false;
+            console.log('valid didn not match a user and pw');
+            return res.status(401).send("The username or password don't match");
         }
     });
 }
@@ -80,17 +85,9 @@ app.post('/sessions/login', function(req, res) {
         return res.status(400).send("You must send the username and the password");
     }
     try {
-        validate(req.body.username, pw, function(req, validRes) {
-            if (validRes == true) {
-                console.log('good pw on signin returning 201');
-                return res.status(201).send({
-                    id_token: createToken(req.body.login)
-                });
-            } else {
-                console.log('valid didn not match a user and pw');
-                return res.status(401).send("The username or password don't match");
-            }
-        })
+        validate(req.body.username, pw, res);
+
+
     } catch (error) {
         console.log(error);
     }

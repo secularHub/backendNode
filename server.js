@@ -34,6 +34,7 @@ app.use(function(err, req, res, next) {
     }
 });
 
+console.log("environment: " + process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'development') {
     app.use(logger('dev'));
     app.use(errorhandler())

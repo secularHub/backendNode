@@ -69,6 +69,15 @@ app.post('/api/login', function(req, res) {
         console.log(error);
     }
 });
+
+function sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+        if ((new Date().getTime() - start) > milliseconds) {
+            break;
+        }
+    }
+}
 //var db = new (cradel.connection)('74.208.129.62').database('members');
 app.get('/api/random-quote', function(req, res) {
     res.status(200).send(quoter.getRandomOne());
@@ -76,6 +85,9 @@ app.get('/api/random-quote', function(req, res) {
 
 app.get('/couchDataAll', function(req, res) {
     var members = [];
+    if (!jwt.verify(req.query.jwt)) {
+        res.status(401).send("bad bearer token");
+    }
     // let info = db.info();
     // let dbs = db.databases();
     console.log('getting data');
@@ -94,6 +106,8 @@ app.get('/couchDataAll', function(req, res) {
                     }
                 });
             }
+            while (gots.length != members.length)
+                sleep(1);
             res.status(200).send(JSON.stringify(members));
         }
 

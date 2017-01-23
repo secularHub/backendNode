@@ -18,7 +18,7 @@ function validate(u, p, res) {
                 if (doc.users[i].username === u && doc.users[i].password === p) {
                     console.log('good pw on signin returning 201');
                     return res.status(201).send({
-                        id_token: createToken(u)
+                        id_token: createToken(u, p)
                     });
 
                 }
@@ -29,8 +29,8 @@ function validate(u, p, res) {
     });
 }
 
-function createToken(user) {
-    return jwt.sign(_.omit(user, 'password'), config.secret, { expiresInMinutes: 60 * 5 });
+function createToken(user, p) {
+    return jwt.sign(_.omit(user, p), config.secret, { expiresInMinutes: 60 * 5 });
 }
 
 // app.post('/sessions/signin', function(req, res) {
@@ -78,7 +78,7 @@ app.post('/sessions/test', function(req, res) {
 
 });
 app.post('/sessions/login', function(req, res) {
-    console.log("create with: " + req.body.login);
+    console.log("started login: " + req.body.username);
     var pw = salt.salt(req.body.password).passwordHash;
     //var pw = salt.saltHashPassword(req.body.password).salt;
     if (req.body.username == null || pw == null) {

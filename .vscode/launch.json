@@ -9,7 +9,7 @@
             "name": "Launch set-admin-password",
             "program": "${workspaceRoot}\\command.js",
             "cwd": "${workspaceRoot}",
-            "args": ["set-admin-password", "snowsnake"],
+            "args": ["set-admin-password", "nutbrain"],
             "outFiles": [],
             "sourceMaps": true
         },

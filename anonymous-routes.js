@@ -83,14 +83,12 @@ app.get('/api/random-quote', function(req, res) {
     res.status(200).send(quoter.getRandomOne());
 });
 
-function callback(any) {
-    console.log(any);
-}
+
 app.get('/couchDataAll', function(req, res) {
     var members = [];
 
     //var verifiedJwt = nJwt.verify(req.query.jwt,config.secret);
-
+    //var testtoken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0ODUxMzkwMTksImV4cCI6MTQ4NTE1NzAxOX0.Zauliu_g5qS8UTbQMV2t6mZiWudbRdvhc1e0GsYLdYY";
     var verifiedJwt = jwt.verify(req.query.jwt, config.secret, function(err, decode) {
         if (err)
             res.status(401).send("bad bearer token");
@@ -110,11 +108,11 @@ app.get('/couchDataAll', function(req, res) {
                             }
                         });
                     }
-                    var cnt = 0;
-                    while (gots.length != members.length || cnt < 5000) {
-                        sleep(1);
-                        cnt += 1;
-                    }
+                    // var cnt = 0;
+                    // while (gots.length != members.length || cnt < 5000) {
+                    //     sleep(1);
+                    //     cnt += 1;
+                    // }
                     res.status(200).send(JSON.stringify(members));
                 }
             });

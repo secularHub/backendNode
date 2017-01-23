@@ -83,39 +83,43 @@ app.get('/api/random-quote', function(req, res) {
     res.status(200).send(quoter.getRandomOne());
 });
 
+function callback(any) {
+    console.log(any);
+}
 app.get('/couchDataAll', function(req, res) {
     var members = [];
-    if (!jwt.verify(req.query.jwt)) {
-        res.status(401).send("bad bearer token");
-    }
-    // let info = db.info();
-    // let dbs = db.databases();
-    console.log('getting data');
-    var test = db.all(function(err, rs) {
-        if (err) {
-            console.dir(err);
-        } else {
 
-            var gots = JSON.parse(rs);
-            for (i = 0; i < gots.length; i++) {
-                db.get(gots[i].id, function(err, doc) {
-                    if (err) {
-                        console.dir(err);
-                    } else {
-                        members.push(doc);
+    //var verifiedJwt = nJwt.verify(req.query.jwt,config.secret);
+
+    var verifiedJwt = jwt.verify(req.query.jwt, config.secret, function(err, decode) {
+        if (err)
+            res.status(401).send("bad bearer token");
+        else {
+            console.log('getting data');
+            var test = db.all(function(err, rs) {
+                if (err) {
+                    console.dir(err);
+                } else {
+                    var gots = JSON.parse(rs);
+                    for (i = 0; i < gots.length; i++) {
+                        db.get(gots[i].id, function(err, doc) {
+                            if (err) {
+                                console.dir(err);
+                            } else {
+                                members.push(doc);
+                            }
+                        });
                     }
-                });
-            }
-            var cnt = 0;
-            while (gots.length != members.length || cnt < 5000) {
-                sleep(1);
-                cnt += 1;
-            }
-            res.status(200).send(JSON.stringify(members));
+                    var cnt = 0;
+                    while (gots.length != members.length || cnt < 5000) {
+                        sleep(1);
+                        cnt += 1;
+                    }
+                    res.status(200).send(JSON.stringify(members));
+                }
+            });
         }
-
-    })
-
+    });
 });
 app.post('/couchDelete', function(req, res) {
     var id = req.body._id;

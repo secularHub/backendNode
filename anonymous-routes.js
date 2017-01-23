@@ -106,8 +106,11 @@ app.get('/couchDataAll', function(req, res) {
                     }
                 });
             }
-            while (gots.length != members.length)
+            var cnt = 0;
+            while (gots.length != members.length || cnt < 5000) {
                 sleep(1);
+                cnt += 1;
+            }
             res.status(200).send(JSON.stringify(members));
         }
 

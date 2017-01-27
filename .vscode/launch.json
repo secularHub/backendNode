@@ -24,6 +24,16 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "reports",
+            "program": "${workspaceRoot}\\reports-routes.js",
+            "cwd": "${workspaceRoot}",
+            "args": ["run-report"],
+            "outFiles": [],
+            "sourceMaps": true
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "server.js",
             "program": "${workspaceRoot}\\server.js",
             "cwd": "${workspaceRoot}",

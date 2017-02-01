@@ -83,7 +83,23 @@ app.get('/api/random-quote', function(req, res) {
     res.status(200).send(quoter.getRandomOne());
 });
 
+var getAllData  = function(members, gots, callback)
+{
+    var rec = 0;
+        for (i = 0; i < gots.length; i++) {
+            db.get(gots[i].id, function(err, doc) {
+                if (err) {
+                    console.dir(err);
+                } else {
+                    members.push(doc);
+                    rec++;
+                }
+            });
 
+        }
+        callback(rec);
+
+}
 app.get('/couchDataAll', function(req, res) {
     var members = [];
 
@@ -99,21 +115,12 @@ app.get('/couchDataAll', function(req, res) {
                     console.dir(err);
                 } else {
                     var gots = JSON.parse(rs);
-                    for (i = 0; i < gots.length; i++) {
-                        db.get(gots[i].id, function(err, doc) {
-                            if (err) {
-                                console.dir(err);
-                            } else {
-                                members.push(doc);
-                            }
-                        });
-                    }
-                    // var cnt = 0;
-                    // while (gots.length != members.length || cnt < 5000) {
-                    //     sleep(1);
-                    //     cnt += 1;
-                    // }
-                    res.status(200).send(JSON.stringify(members));
+                    getAllData(members,gots, function(cb){
+                        console.log("sending back " + cb);
+                            res.status(200).send(JSON.stringify(members));
+                    })
+
+                    
                 }
             });
         }

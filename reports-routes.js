@@ -18,7 +18,7 @@ var sendEmail = function(message, address) {
     }, function(err, message) { console.log(err || message); });
 }
 
-array = process.argv;
+var array = process.argv;
 var runreport = function() {
     var members = [];
     var test = db.all(function(err, rs) {

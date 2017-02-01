@@ -1,7 +1,7 @@
 {
-  "name": "chuck-norris-quotes-api",
+  "name": "back-end-for-secular-hub",
   "version": "0.1.0",
-  "description": "Chuck Norris Quotes API",
+  "description": "Seculare Hub API",
   "main": "server.js",
   "scripts": {
     "grunt": "grunt",
@@ -15,7 +15,7 @@
     "jwt",
     "auth0"
   ],
-  "author": "Martin Gontovnikas",
+  "author": "Joe Dickinson and Dave Fangrow",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/auth0/in-memory-todo/issues"
@@ -41,6 +41,7 @@
     "lodash": "^2.4.2",
     "morgan": "^1.7.0",
     "node-json-db": "^0.7.3",
+    "object-assign": "^4.1.1",
     "pg": "^6.1.0",
     "request": "^2.79.0",
     "tingodb": "^0.4.2",

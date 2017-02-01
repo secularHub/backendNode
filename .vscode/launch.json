@@ -34,6 +34,16 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "testMail",
+            "program": "${workspaceRoot}\\reports-routes.js",
+            "cwd": "${workspaceRoot}",
+            "args": ["run-testmail"],
+            "outFiles": [],
+            "sourceMaps": true
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "server.js",
             "program": "${workspaceRoot}\\server.js",
             "cwd": "${workspaceRoot}",

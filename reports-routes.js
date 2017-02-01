@@ -38,7 +38,7 @@ var runreport = function() {
                             if (pm.receivedDate.getFullYear === new Date().getFullYear)
                                 total += pm.amount;
                         }
-                        sendEmail("you have paied $" + total + " for this year.", doc.email);
+                        sendEmail("you have paid $" + total + " for this year.", doc.email);
                     }
                 });
             }
@@ -47,8 +47,15 @@ var runreport = function() {
         }
     });
 }
+
+var testMail = function() {
+    sendEmail("testing email", "josephtdickinson@outlook.com")
+}
 if (array[2] === "run-report")
     runreport();
+
+if (array[2] === "run-testmail")
+    testMail();
 
 
 
@@ -66,4 +73,7 @@ var app = module.exports = express.Router();
 
 app.post('/Report1', function(req, res) {
     runreport();
+});
+app.post('/sendMail', function(req, res) {
+    testMail();
 });

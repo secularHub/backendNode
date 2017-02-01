@@ -41,6 +41,16 @@
             "outFiles": [],
             "sourceMaps": true
         },
+         {
+            "type": "node",
+            "request": "launch",
+            "name": "testReconcile",
+            "program": "${workspaceRoot}\\process-routes.js",
+            "cwd": "${workspaceRoot}",
+            "args": ["run-reconcile"],
+            "outFiles": [],
+            "sourceMaps": true
+        },
         {
             "type": "node",
             "request": "launch",

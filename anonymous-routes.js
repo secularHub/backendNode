@@ -106,6 +106,7 @@ app.get('/couchDataAll', function(req, res) {
     //var verifiedJwt = nJwt.verify(req.query.jwt,config.secret);
     //var testtoken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0ODUxMzkwMTksImV4cCI6MTQ4NTE1NzAxOX0.Zauliu_g5qS8UTbQMV2t6mZiWudbRdvhc1e0GsYLdYY";
     var verifiedJwt = jwt.verify(req.query.jwt, config.secret, function(err, decode) {
+        
         if (err)
             res.status(401).send("bad bearer token");
         else {

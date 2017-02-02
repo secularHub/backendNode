@@ -21,6 +21,6 @@ if (array[2] === "run-reconcile")
 var app = module.exports = express.Router();
 
 app.post('/api/reconcile',function (req,res){
-        reconcile.recon();
+        recs.reconcile.recon();
 
     });

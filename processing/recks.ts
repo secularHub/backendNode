@@ -1,8 +1,8 @@
 "use strict";
 
-import * as cradle from 'cradle'
-import {Member} from './member';
-import {rules} from './rules';
+import * as cradle from "cradle"
+import {Member} from "./member";
+import {rules} from "./rules";
 
 export class Recks{
     public addMonths (date: Date, count: number): Date {

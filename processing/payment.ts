@@ -2,7 +2,7 @@
 
 export interface IPayment {
   receivedDate: Date;
-  //receivedDateString: string;
+  // receivedDateString: string;
   amount: number;
   type: string;
   active: boolean;
@@ -12,13 +12,13 @@ export interface IPayment {
 
 export class Payment implements IPayment{
   constructor(){
-    this.type = 'cash';
+    this.type = "cash";
     this.amount = 0;
     this.receivedDate = new Date();
   }
   receivedDate: Date;
   receivedDateNumeric: number;
-  //receivedDateString: string;
+  // receivedDateString: string;
   amount: number;
   type: string;
   active: boolean;

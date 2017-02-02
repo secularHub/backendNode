@@ -5,7 +5,6 @@ var reconcile;
     function recon() {
         let r = new recks_1.Recks();
         r.pullAllData();
-        r.processMembers();
     }
     reconcile.recon = recon;
 })(reconcile = exports.reconcile || (exports.reconcile = {}));

@@ -1,3 +1,5 @@
+"use strict";
+
 export interface IPayment {
   receivedDate: Date;
   //receivedDateString: string;

@@ -1,3 +1,4 @@
+"use strict";
 
 import {IPayment} from "./payment";
 export class Member {

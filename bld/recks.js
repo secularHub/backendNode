@@ -1,6 +1,7 @@
-import * as cradle from 'cradle';
-import { rules } from './rules';
-export class recks {
+"use strict";
+const cradle = require("cradle");
+const rules_1 = require("./rules");
+class Recks {
     addMonths(date, count) {
         if (date == null)
             return new Date();
@@ -21,7 +22,8 @@ export class recks {
         return nd;
     }
     getDataAll(gots) {
-        var rec = 0;
+        let rec = 0;
+        this.members = new Array();
         for (let i = 0; i < gots.length; i++) {
             this.db.get(gots[i].id, function (err, doc) {
                 if (err) {
@@ -36,22 +38,23 @@ export class recks {
         return rec;
     }
     pullAllData() {
-        this.db = new (cradle.Connection)("foxjazz.org").database('members');
-        var test = this.db.all(function (err, rs) {
+        this.db = new (cradle.Connection)("foxjazz.org").database("members");
+        this.db.all(function (err, rs) {
             if (err) {
                 console.dir(err);
             }
             else {
-                var gots = JSON.parse(rs);
-                this.getAllData(gots, function (cb) {
+                let gots = JSON.parse(rs);
+                this.getDataAll(gots, function (cb) {
                     console.log("sending back " + cb);
-                    this.DoRec();
+                    this.processMembers();
                 });
             }
         });
     }
+    ;
     processMembers() {
-        //at this point members should be populated. Now it's time to run the logic.
+        //  at this point members should be populated. Now it's time to run the logic.
         let tnow = new Date();
         let thist = this.addMonths(tnow, -12);
         this.memberlist = this.members;
@@ -72,7 +75,7 @@ export class recks {
                                 total = total + mypay.amount;
                         }
                     }
-                    for (let r of rules) {
+                    for (let r of rules_1.rules) {
                         if (total > r.Amount) {
                             member.isActive = true;
                             this.elseloop.push(member);
@@ -90,4 +93,5 @@ export class recks {
         }
     }
 }
+exports.Recks = Recks;
 //# sourceMappingURL=recks.js.map

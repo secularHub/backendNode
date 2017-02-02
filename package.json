@@ -7,6 +7,7 @@
     "grunt": "grunt",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+
   "repository": {
     "type": "git",
     "url": "https://github.com/auth0/angular2-authentication-sample"
@@ -29,6 +30,8 @@
     "dotenv": "^0.4.0",
     "emailjs": "^1.0.8",
     "errorhandler": "^1.4.3",
+    "es6": "0.0.7",
+    "es6-module-loader": "^0.17.11",
     "express": "^4.13.4",
     "express-jwt": "^0.3.2",
     "grunt": "^1.0.1",

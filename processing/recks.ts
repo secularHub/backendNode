@@ -1,9 +1,11 @@
+"use strict";
+
 import * as cradle from 'cradle'
 import {Member} from './member';
 import {rules} from './rules';
 
-export class recks{
-    public addMonths (date: Date, count: number):Date {
+export class Recks{
+    public addMonths (date: Date, count: number): Date {
     if(date == null)
       return new Date();
     let nd: Date;
@@ -16,7 +18,7 @@ export class recks{
       else {
         if(nd.getMonth() === 11)
         {
-          nd.setMonth(0,1);
+          nd.setMonth(0, 1);
           nd.setFullYear(nd.getFullYear() + 1);
         }
         nd.setMonth(nd.getMonth() + count, 1);
@@ -25,12 +27,13 @@ export class recks{
     }
     return nd;
   }
-  members : Array<Member>;
-  memberlist : Array<Member>;
-  db: cradle.Database;
+  public members: Array<Member>;
+  public memberlist: Array<Member>;
+  public db: cradle.Database;
   private getDataAll(gots: any): number
   {
-        var rec = 0;
+        let rec = 0;
+        this.members = new Array<Member>();
         for (let i = 0; i < gots.length; i++) {
             this.db.get(gots[i].id, function(err, doc) {
                 if (err) {
@@ -45,26 +48,25 @@ export class recks{
         return rec;
   }
   public pullAllData(){
-        this.db = new(cradle.Connection)("foxjazz.org").database('members');
-        var test = this.db.all( function (err, rs) {
-                if (err) {
-                    console.dir(err);
-                } else {
-                    var gots = JSON.parse(rs);
-                    this.getAllData(gots, function(cb: number){
-                        console.log("sending back " + cb);
-                            this.DoRec();
-                    })
-                    
-                }
+        this.db = new(cradle.Connection)("foxjazz.org").database("members");
+        this.db.all( function (err, rs) {
+            if (err) {
+                console.dir(err);
+            } else {
+                let gots = JSON.parse(rs);
+                this.getDataAll(gots, function (cb: number) {
+                    console.log("sending back " + cb);
+                    this.processMembers();
+                });
+              }
             });
-  }
+        };
   private payloop: Array<Member>;
   private forloop: Array<Member>;
   private elseloop: Array<Member>;
 
   public processMembers(){
-      //at this point members should be populated. Now it's time to run the logic.
+      //  at this point members should be populated. Now it's time to run the logic.
         let tnow = new Date();
         let thist = this.addMonths(tnow, -12);
         this.memberlist = this.members;
@@ -96,7 +98,7 @@ export class recks{
                 member.isActive = false;
             }
             }
-        this.db.save(member,function(err,res){
+        this.db.save(member, function(err, res){
             if(err)
                 console.log(err);
         });

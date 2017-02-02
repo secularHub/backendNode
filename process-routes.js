@@ -6,11 +6,12 @@ var express = require('express'),
     jwt = require('jsonwebtoken'),
     salt = require('./salt.js');
 var array = process.argv;
-var recs = require('./bld/reconcile');
 
+//import {recs} from './bld/reconcile';
+var recs = require('./bld/reconcile');
 var testReconcile = function()
 {
-    recs.recon();
+    recs.reconcile.recon();
 }
 
 

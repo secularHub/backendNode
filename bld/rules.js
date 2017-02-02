@@ -1,4 +1,5 @@
-export let rules = [
+"use strict";
+exports.rules = [
     { TermInMonths: 0, Amount: 0, MembershipType: "Not Active" },
     { TermInMonths: 12, Amount: 45, MembershipType: "Regular" },
     { TermInMonths: 12, Amount: 75, MembershipType: "Family" },

@@ -1,21 +1,9 @@
-import * as cradle from 'cradle'
-import {Member} from './member';
-import {rules} from './rules';
-import {recks} from './recks';
-//import * as Object from 'object-assign'
-/*declare interface ObjectConstructor {
-    assign(...objects: Object[]): Object;
-}*/
-
-
-export module reconcile{
-    
+"use strict";
+import {Recks} from "./recks";
+export namespace reconcile{
     export function  recon(){
-        let r = new recks();
-        
+        let r = new Recks();
         r.pullAllData();
         r.processMembers();
-
-
     }
 }

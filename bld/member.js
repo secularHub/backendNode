@@ -1,4 +1,5 @@
-export class Member {
+"use strict";
+class Member {
     constructor(email, done = false) {
         this.email = email;
         this.completed = done;
@@ -34,4 +35,5 @@ export class Member {
         }
     }
 }
+exports.Member = Member;
 //# sourceMappingURL=member.js.map

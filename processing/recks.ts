@@ -30,7 +30,7 @@ export class Recks{
   public members: Array<Member>;
   public memberlist: Array<Member>;
   public db: cradle.Database;
-  private getDataAll(gots: any): number
+  public getAllMembers(gots: any): number
   {
         let rec = 0;
         this.members = new Array<Member>();
@@ -54,10 +54,8 @@ export class Recks{
                 console.dir(err);
             } else {
                 let gots = JSON.parse(rs);
-                this.getDataAll(gots, function (cb: number) {
-                    console.log("sending back " + cb);
-                    this.processMembers();
-                });
+                let cb = this.getAllMembers(gots);
+                this.processMembers();
               }
             });
         };

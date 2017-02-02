@@ -21,7 +21,7 @@ class Recks {
         }
         return nd;
     }
-    getDataAll(gots) {
+    getAllMembers(gots) {
         let rec = 0;
         this.members = new Array();
         for (let i = 0; i < gots.length; i++) {
@@ -45,10 +45,8 @@ class Recks {
             }
             else {
                 let gots = JSON.parse(rs);
-                this.getDataAll(gots, function (cb) {
-                    console.log("sending back " + cb);
-                    this.processMembers();
-                });
+                let cb = this.getAllMembers(gots);
+                this.processMembers();
             }
         });
     }

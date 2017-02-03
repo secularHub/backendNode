@@ -1,6 +1,6 @@
 "use strict";
 
-import * as cradle from "cradle"
+import * as cradle from "cradle";
 import {Member} from "./member";
 import {rules} from "./rules";
 
@@ -30,32 +30,41 @@ export class Recks{
   public members: Array<Member>;
   public memberlist: Array<Member>;
   public db: cradle.Database;
-  public getAllMembers(gots: any): number
+
+  private popMember(got: any): Promise<void>
+  {
+      return new Promise<void>((resolve,reject)=>{
+        this.db.get(got.id,(err: any,doc: any) => {
+            if(err)
+                    reject(err);
+                else{
+                    this.members.push(doc);
+                    resolve();
+                }
+        });
+      });
+  }
+  public async getAllMembers(gots: any)
   {
         let rec = 0;
         this.members = new Array<Member>();
         for (let i = 0; i < gots.length; i++) {
-            this.db.get(gots[i].id, function(err, doc) {
-                if (err) {
-                    console.dir(err);
-                } else {
-                    this.members.push(doc);
-                    rec++;
-                }
-            });
-
+            await this.popMember(gots[i]);
+            console.log(i);
+            if(i == gots.length)
+                this.processMembers();
         }
         return rec;
   }
   public pullAllData(){
         this.db = new(cradle.Connection)("foxjazz.org").database("members");
-        this.db.all( function (err, rs) {
+        this.db.all( (err: any, rs: any) => {
             if (err) {
                 console.dir(err);
             } else {
                 let gots = JSON.parse(rs);
                 let cb = this.getAllMembers(gots);
-                this.processMembers();
+                
               }
             });
         };
@@ -96,7 +105,7 @@ export class Recks{
                 member.isActive = false;
             }
             }
-        this.db.save(member, function(err, res){
+        this.db.save(member, function(err: any, res: any){
             if(err)
                 console.log(err);
         });

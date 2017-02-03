@@ -1,4 +1,12 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 const cradle = require("cradle");
 const rules_1 = require("./rules");
 class Recks {
@@ -21,32 +29,40 @@ class Recks {
         }
         return nd;
     }
-    getAllMembers(gots) {
-        let rec = 0;
-        this.members = new Array();
-        for (let i = 0; i < gots.length; i++) {
-            this.db.get(gots[i].id, function (err, doc) {
-                if (err) {
-                    console.dir(err);
-                }
+    popMember(got) {
+        return new Promise((resolve, reject) => {
+            this.db.get(got.id, (err, doc) => {
+                if (err)
+                    reject(err);
                 else {
                     this.members.push(doc);
-                    rec++;
+                    resolve();
                 }
             });
-        }
-        return rec;
+        });
+    }
+    getAllMembers(gots) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let rec = 0;
+            this.members = new Array();
+            for (let i = 0; i < gots.length; i++) {
+                yield this.popMember(gots[i]);
+                console.log(i);
+                if (i == gots.length)
+                    this.processMembers();
+            }
+            return rec;
+        });
     }
     pullAllData() {
         this.db = new (cradle.Connection)("foxjazz.org").database("members");
-        this.db.all(function (err, rs) {
+        this.db.all((err, rs) => {
             if (err) {
                 console.dir(err);
             }
             else {
                 let gots = JSON.parse(rs);
                 let cb = this.getAllMembers(gots);
-                this.processMembers();
             }
         });
     }

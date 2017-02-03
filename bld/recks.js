@@ -56,7 +56,32 @@ class Recks {
             return rec;
         });
     }
-    pullAllData() {
+    sendAllMembers(gots, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let rec = 0;
+            this.members = new Array();
+            for (let i = 0; i < gots.length; i++) {
+                yield this.popMember(gots[i]);
+                console.log("l:" + i + "-" + gots.length);
+                if (i === gots.length - 1)
+                    res.status(200).send(JSON.stringify(this.members));
+            }
+            return rec;
+        });
+    }
+    pullAll(res) {
+        this.db = new (cradle.Connection)("foxjazz.org").database("members");
+        this.db.all((err, rs) => {
+            if (err) {
+                console.dir(err);
+            }
+            else {
+                let gots = JSON.parse(rs);
+                this.sendAllMembers(gots, res);
+            }
+        });
+    }
+    reconcileAll() {
         this.db = new (cradle.Connection)("foxjazz.org").database("members");
         this.db.all((err, rs) => {
             if (err) {
@@ -68,7 +93,6 @@ class Recks {
             }
         });
     }
-    ;
     processMembers() {
         this.forloop = new Array();
         this.payloop = new Array();

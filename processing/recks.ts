@@ -58,7 +58,32 @@ export class Recks{
         }
         return rec;
   }
-  public pullAllData(){
+
+    public async sendAllMembers(gots: any, res: any)
+    {
+        let rec = 0;
+        this.members = new Array<Member>();
+        for (let i = 0; i < gots.length; i++) {
+            await this.popMember(gots[i]);
+            console.log("l:" + i + "-" + gots.length);
+            if(i === gots.length - 1)
+                res.status(200).send(JSON.stringify(this.members));
+        }
+        return rec;
+    }
+
+  public pullAll(res: any ){
+      this.db = new(cradle.Connection)("foxjazz.org").database("members");
+      this.db.all( (err: any, rs: any) => {
+          if (err) {
+              console.dir(err);
+          } else {
+              let gots = JSON.parse(rs);
+              this.sendAllMembers(gots, res);
+          }
+      });
+  }
+  public reconcileAll(){
         this.db = new(cradle.Connection)("foxjazz.org").database("members");
         this.db.all( (err: any, rs: any) => {
             if (err) {
@@ -67,8 +92,8 @@ export class Recks{
                 let gots = JSON.parse(rs);
                 let cb = this.getAllMembers(gots);
               }
-            });
-        };
+        });
+  }
   private payloop: Array<Member>;
   private forloop: Array<Member>;
   private elseloop: Array<Member>;

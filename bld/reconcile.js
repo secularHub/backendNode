@@ -4,7 +4,7 @@ var reconcile;
 (function (reconcile) {
     function recon() {
         let r = new recks_1.Recks();
-        r.pullAllData();
+        r.reconcileAll();
     }
     reconcile.recon = recon;
 })(reconcile = exports.reconcile || (exports.reconcile = {}));
@@ -12,7 +12,7 @@ var helper;
 (function (helper) {
     function getall(res) {
         let r = new recks_1.Recks();
-        r.pullAllData();
+        r.pullAll(res);
     }
     helper.getall = getall;
 })(helper = exports.helper || (exports.helper = {}));

@@ -73,6 +73,7 @@ class Recks {
         let thist = this.addMonths(tnow, -12);
         this.memberlist = this.members;
         for (let res2 of this.memberlist) {
+            console.log(res2.firstName);
             this.forloop.push(res2);
             let member = Object.assign({}, res2);
             if (member.memType === "VIP") {
@@ -100,6 +101,7 @@ class Recks {
                         member.isActive = false;
                 }
             }
+            console.log("saving:" + member.firstName + " active:" + member.isActive);
             this.db.save(member, function (err, res) {
                 if (err)
                     console.log(err);

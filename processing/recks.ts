@@ -33,7 +33,7 @@ export class Recks{
 
   private popMember(got: any): Promise<void>
   {
-      return new Promise<void>((resolve,reject)=>{
+      return new Promise<void>((resolve, reject) => {
         this.db.get(got.id,(err: any,doc: any) => {
             if(err)
                     reject(err);
@@ -78,6 +78,7 @@ export class Recks{
         let thist = this.addMonths(tnow, -12);
         this.memberlist = this.members;
         for (let res2 of this.memberlist) {
+            console.log(res2.firstName);
             this.forloop.push(res2);
             let member = Object.assign({}, res2);
             if (member.memType === "VIP") {
@@ -103,9 +104,10 @@ export class Recks{
                 }
                 if (member.memType === "Not Active")
                 member.isActive = false;
+                }
             }
-            }
-        this.db.save(member, function(err: any, res: any){
+            console.log("saving:" + member.firstName + " active:" + member.isActive);
+            this.db.save(member, function(err: any, res: any){
             if(err)
                 console.log(err);
         });

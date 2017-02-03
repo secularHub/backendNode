@@ -115,8 +115,8 @@ app.get('/couchDataAll', function(req, res) {
                 if (err) {
                     console.dir(err);
                 } else {
-                    var gots = JSON.parse(rs);
-                    getAllData(members,gots, function(cb){
+                    var mids = JSON.parse(rs);
+                    getAllData(members,mids, function(cb){
                         console.log("sending back " + cb);
                             res.status(200).send(JSON.stringify(members));
                     })

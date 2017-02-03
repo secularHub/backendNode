@@ -70,7 +70,7 @@ class Recks {
         });
     }
     pullAll(res) {
-        this.db = new (cradle.Connection)("foxjazz.org").database("members");
+        this.db = new (cradle.Connection)().database("members");
         this.db.all((err, rs) => {
             if (err) {
                 console.dir(err);
@@ -131,27 +131,14 @@ class Recks {
                 }
             }
             console.log("saving:" + member.firstName + " active:" + member.isActive);
-            this.putMember(member);
-        }
-    }
-    putMember(m) {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield this.saveMember(m);
-        });
-    }
-    saveMember(member) {
-        return new Promise((resolve, reject) => {
             this.db.save(member, (err, res) => {
-                if (err) {
-                    reject(err);
-                    console.log(err);
-                }
+                if (err)
+                    console.log("error: mid:" + member._id + " " + err);
                 else {
-                    console.log("rev:" + res._rev);
-                    resolve();
+                    console.log("saving:" + member.firstName + " active:" + member.isActive + " typ:" + member.memType);
                 }
             });
-        });
+        }
     }
 }
 exports.Recks = Recks;

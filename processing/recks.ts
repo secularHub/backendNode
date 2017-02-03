@@ -73,7 +73,7 @@ export class Recks{
     }
 
   public pullAll(res: any ){
-      this.db = new(cradle.Connection)("foxjazz.org").database("members");
+      this.db = new(cradle.Connection)().database("members");
       this.db.all( (err: any, rs: any) => {
           if (err) {
               console.dir(err);
@@ -136,10 +136,16 @@ export class Recks{
                 }
             }
             console.log("saving:" + member.firstName + " active:" + member.isActive);
-            this.putMember(member);
+            this.db.save(member,(err,res)=>{
+                if(err)
+                    console.log("error: mid:" + member._id + " " + err);
+                else {
+                    console.log("saving:" + member.firstName + " active:" + member.isActive + " typ:" + member.memType);
+                }
+            });
         }
     }
-    private async putMember(m: Member){
+/*    private async putMember(m: Member){
       await this.saveMember(m);
     }
     private saveMember(member: Member): Promise<void> {
@@ -155,5 +161,5 @@ export class Recks{
                 }
             });
         });
-    }
+    }*/
 }

@@ -110,6 +110,7 @@ class Recks {
             }
             else {
                 member.isActive = false;
+                member.memType = "Not Active";
                 if (member.payments != null && member.payments.length > 0) {
                     let total = 1;
                     this.payloop.push(member);

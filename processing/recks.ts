@@ -115,6 +115,7 @@ export class Recks{
             }
             else {
             member.isActive = false;
+            member.memType = "Not Active";
             if (member.payments != null && member.payments.length > 0) {
                 let total = 1;
                 this.payloop.push(member);
@@ -135,6 +136,7 @@ export class Recks{
                 member.isActive = false;
                 }
             }
+
             console.log("saving:" + member.firstName + " active:" + member.isActive);
             this.db.save(member,(err,res)=>{
                 if(err)

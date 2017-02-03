@@ -1,56 +1,56 @@
 {
-  "name": "back-end-for-secular-hub",
-  "version": "0.1.0",
-  "description": "Seculare Hub API",
-  "main": "server.js",
-  "scripts": {
-    "grunt": "grunt",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/auth0/angular2-authentication-sample"
-  },
-  "keywords": [
-    "jwt",
-    "auth0"
-  ],
-  "author": "Joe Dickinson and Dave Fangrow",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/auth0/in-memory-todo/issues"
-  },
-  "homepage": "https://github.com/auth0/in-memory-todo",
-  "dependencies": {
-    "body-parser": "^1.15.0",
-    "compression": "^1.6.1",
-    "cors": "^2.7.1",
-    "cradle": "^0.7.1",
-    "dotenv": "^0.4.0",
-    "emailjs": "^1.0.8",
-    "errorhandler": "^1.4.3",
-    "express": "^4.13.4",
-    "express-jwt": "^0.3.2",
-    "grunt": "^1.0.1",
-    "grunt-cli": "^1.2.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-ts": "^6.0.0-beta.11",
-    "grunt-tslint": "^4.0.0",
-    "http": "0.0.0",
-    "jsonwebtoken": "^1.3.0",
-    "lodash": "^2.4.2",
-    "morgan": "^1.7.0",
-    "node-json-db": "^0.7.3",
-    "object-assign": "^4.1.1",
-    "request": "^2.79.0",
-    "tsc": "^1.20150623.0",
-    "tsconfig": "^5.0.3",
-    "tslint": "^4.4.2",
-    "typescript": "^2.1.5"
-  },
-  "devDependencies": {
-    "@types/node": "^7.0.4",
-    "es6": "0.0.7",
-    "es6-module-loader": "^0.17.11"
-  }
+    "name": "back-end-for-secular-hub",
+    "version": "0.1.0",
+    "description": "Seculare Hub API",
+    "main": "server.js",
+    "scripts": {
+        "grunt": "grunt",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/auth0/angular2-authentication-sample"
+    },
+    "keywords": [
+        "jwt",
+        "auth0"
+    ],
+    "author": "Joe Dickinson and Dave Fangrow",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/auth0/in-memory-todo/issues"
+    },
+    "homepage": "https://github.com/auth0/in-memory-todo",
+    "dependencies": {
+        "body-parser": "^1.15.0",
+        "compression": "^1.6.1",
+        "cors": "^2.7.1",
+        "cradle": "^0.7.1",
+        "dotenv": "^0.4.0",
+        "emailjs": "^1.0.8",
+        "errorhandler": "^1.4.3",
+        "express": "^4.13.4",
+        "express-jwt": "^0.3.2",
+        "grunt": "^1.0.1",
+        "grunt-cli": "^1.2.0",
+        "grunt-contrib-watch": "^1.0.0",
+        "grunt-ts": "^6.0.0-beta.11",
+        "grunt-tslint": "^4.0.0",
+        "http": "0.0.0",
+        "jsonwebtoken": "^1.3.0",
+        "lodash": "^2.4.2",
+        "morgan": "^1.7.0",
+        "node-json-db": "^0.7.3",
+        "object-assign": "^4.1.1",
+        "request": "^2.79.0",
+        "tsconfig": "^5.0.3",
+        "tslint": "^4.4.2",
+        "typescript": "^2.1.5"
+    },
+    "devDependencies": {
+        "@types/node": "^7.0.4",
+        "es6": "0.0.7",
+        "es6-module-loader": "^0.17.11"
+    }
 }

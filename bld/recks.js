@@ -47,7 +47,7 @@ class Recks {
             this.members = new Array();
             for (let i = 0; i < gots.length; i++) {
                 yield this.popMember(gots[i]);
-                console.log(i);
+                console.log("l:" + i + "-" + gots.length);
                 if (i == gots.length)
                     this.processMembers();
             }

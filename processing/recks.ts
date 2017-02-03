@@ -50,8 +50,8 @@ export class Recks{
         this.members = new Array<Member>();
         for (let i = 0; i < gots.length; i++) {
             await this.popMember(gots[i]);
-            console.log(i);
-            if(i == gots.length)
+            console.log("l:" + i + "-" + gots.length);
+            if(i == gots.length - 1)
                 this.processMembers();
         }
         return rec;

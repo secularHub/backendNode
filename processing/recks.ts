@@ -35,8 +35,10 @@ export class Recks{
   {
       return new Promise<void>((resolve, reject) => {
         this.db.get(got.id,(err: any,doc: any) => {
-            if(err)
-                    reject(err);
+            if(err) {
+                reject(err);
+                console.log(err);
+            }
                 else{
                     this.members.push(doc);
                     resolve();
@@ -64,7 +66,6 @@ export class Recks{
             } else {
                 let gots = JSON.parse(rs);
                 let cb = this.getAllMembers(gots);
-                
               }
             });
         };
@@ -74,10 +75,10 @@ export class Recks{
 
   public processMembers(){
       //  at this point members should be populated. Now it's time to run the logic.
+        console.log("in processMembers - length: " + this.members.length);
         let tnow = new Date();
         let thist = this.addMonths(tnow, -12);
-        this.memberlist = this.members;
-        for (let res2 of this.memberlist) {
+        for (let res2 of this.members) {
             console.log(res2.firstName);
             this.forloop.push(res2);
             let member = Object.assign({}, res2);

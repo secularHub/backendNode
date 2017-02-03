@@ -147,6 +147,18 @@ export class Recks{
             });
         }
     }
+    getOne(n: string, res: any){
+        this.db = new(cradle.Connection)().database("members");
+        this.db.get(n,(err, doc) => {
+            if(err) {
+                console.log(" get error:" + err);
+                res.status(409).send(err);
+            }
+            else
+                res.status(200).send(JSON.stringify(doc));
+        });
+
+    }
 /*    private async putMember(m: Member){
       await this.saveMember(m);
     }

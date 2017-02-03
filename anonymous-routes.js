@@ -142,9 +142,10 @@ app.post('/couchDelete', function(req, res) {
     });
 });
 app.get('/couchGet', function(req, res) {
-    db.get(req.query.id, function(err, doc) {
+    recs.helper.getOne(req.query.id,res);
+/*    db.get(req.query.id, function(err, doc) {
         res.status(200).send(doc);
-    });
+    });*/
 });
 app.post('/couchSave', function(req, res1) {
 

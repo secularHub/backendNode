@@ -10,6 +10,11 @@ var reconcile;
 })(reconcile = exports.reconcile || (exports.reconcile = {}));
 var helper;
 (function (helper) {
+    function getOne(sid, res) {
+        let r = new recks_1.Recks();
+        r.getOne(sid, res);
+    }
+    helper.getOne = getOne;
     function getall(res) {
         let r = new recks_1.Recks();
         r.pullAll(res);

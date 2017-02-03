@@ -141,6 +141,17 @@ class Recks {
             });
         }
     }
+    getOne(n, res) {
+        this.db = new (cradle.Connection)().database("members");
+        this.db.get(n, (err, doc) => {
+            if (err) {
+                console.log(" get error:" + err);
+                res.status(409).send(err);
+            }
+            else
+                res.status(200).send(JSON.stringify(doc));
+        });
+    }
 }
 exports.Recks = Recks;
 //# sourceMappingURL=recks.js.map

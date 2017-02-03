@@ -9,6 +9,11 @@ export namespace reconcile{
 }
 
 export namespace helper{
+    export function getOne(sid: string, res: any)
+    {
+        let r = new Recks();
+        r.getOne(sid,res);
+    }
     export function  getall(res: any){
         let r = new Recks();
         r.pullAll(res);

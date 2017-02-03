@@ -55,7 +55,7 @@ class Recks {
         });
     }
     pullAllData() {
-        this.db = new (cradle.Connection)("foxjazz.org").database("members");
+        this.db = new (cradle.Connection)().database("members");
         this.db.all((err, rs) => {
             if (err) {
                 console.dir(err);

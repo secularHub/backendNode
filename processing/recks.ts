@@ -57,7 +57,7 @@ export class Recks{
         return rec;
   }
   public pullAllData(){
-        this.db = new(cradle.Connection)("foxjazz.org").database("members");
+        this.db = new(cradle.Connection)().database("members");
         this.db.all( (err: any, rs: any) => {
             if (err) {
                 console.dir(err);

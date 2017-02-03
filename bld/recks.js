@@ -104,11 +104,27 @@ class Recks {
                 }
             }
             console.log("saving:" + member.firstName + " active:" + member.isActive);
-            this.db.save(member, function (err, res) {
-                if (err)
-                    console.log(err);
-            });
+            this.putMember(member);
         }
+    }
+    putMember(m) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.saveMember(m);
+        });
+    }
+    saveMember(member) {
+        return new Promise((resolve, reject) => {
+            this.db.save(member, (err, res) => {
+                if (err) {
+                    reject(err);
+                    console.log(err);
+                }
+                else {
+                    console.log("rev:" + res._rev);
+                    resolve();
+                }
+            });
+        });
     }
 }
 exports.Recks = Recks;

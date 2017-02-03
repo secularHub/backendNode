@@ -108,11 +108,24 @@ export class Recks{
                 }
             }
             console.log("saving:" + member.firstName + " active:" + member.isActive);
-            this.db.save(member, function(err: any, res: any){
-            if(err)
-                console.log(err);
+            this.putMember(member);
+        }
+    }
+    private async putMember(m: Member){
+      await this.saveMember(m);
+    }
+    private saveMember(member: Member): Promise<void> {
+        return new Promise<void>((resolve, reject) => {
+            this.db.save(member,(err: any,res: any) => {
+                if(err) {
+                    reject(err);
+                    console.log(err);
+                }
+                else{
+                    console.log("rev:" + res._rev);
+                    resolve();
+                }
+            });
         });
-      }
-  }
-
+    }
 }

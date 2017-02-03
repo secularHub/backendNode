@@ -57,7 +57,7 @@ class Recks {
         });
     }
     pullAllData() {
-        this.db = new (cradle.Connection)().database("members");
+        this.db = new (cradle.Connection)("foxjazz.org").database("members");
         this.db.all((err, rs) => {
             if (err) {
                 console.dir(err);
@@ -70,6 +70,9 @@ class Recks {
     }
     ;
     processMembers() {
+        this.forloop = new Array();
+        this.payloop = new Array();
+        this.elseloop = new Array();
         //  at this point members should be populated. Now it's time to run the logic.
         console.log("in processMembers - length: " + this.members.length);
         let tnow = new Date();

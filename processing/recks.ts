@@ -59,7 +59,7 @@ export class Recks{
         return rec;
   }
   public pullAllData(){
-        this.db = new(cradle.Connection)().database("members");
+        this.db = new(cradle.Connection)("foxjazz.org").database("members");
         this.db.all( (err: any, rs: any) => {
             if (err) {
                 console.dir(err);
@@ -74,6 +74,9 @@ export class Recks{
   private elseloop: Array<Member>;
 
   public processMembers(){
+      this.forloop = new Array<Member>();
+      this.payloop = new Array<Member>();
+      this.elseloop = new Array<Member>();
       //  at this point members should be populated. Now it's time to run the logic.
         console.log("in processMembers - length: " + this.members.length);
         let tnow = new Date();

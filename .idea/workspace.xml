@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="169ac466-7c10-42e8-be13-0fbebab7a780" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bld/recks.js" afterPath="$PROJECT_DIR$/bld/recks.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bld/recks.js.map" afterPath="$PROJECT_DIR$/bld/recks.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bld/rules.js" afterPath="$PROJECT_DIR$/bld/rules.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bld/rules.js.map" afterPath="$PROJECT_DIR$/bld/rules.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/processing/recks.ts" afterPath="$PROJECT_DIR$/processing/recks.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/processing/rules.ts" afterPath="$PROJECT_DIR$/processing/rules.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -36,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rules.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="rules.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/processing/rules.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="3" column="79" lean-forward="false" selection-start-line="3" selection-start-column="79" selection-end-line="3" selection-end-column="79" />
+            <state relative-caret-position="225">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -56,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="recks.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="recks.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/processing/recks.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="783">
-              <caret line="68" column="2" lean-forward="false" selection-start-line="68" selection-start-column="2" selection-end-line="68" selection-end-column="2" />
+            <state relative-caret-position="638">
+              <caret line="63" column="5" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
               <folding>
                 <element signature="e#15#48#0" expanded="true" />
               </folding>
@@ -154,8 +151,8 @@
         <option value="$PROJECT_DIR$/process-routes.js" />
         <option value="$PROJECT_DIR$/anonymous-routes.js" />
         <option value="$PROJECT_DIR$/processing/reconcile.ts" />
-        <option value="$PROJECT_DIR$/processing/rules.ts" />
         <option value="$PROJECT_DIR$/processing/recks.ts" />
+        <option value="$PROJECT_DIR$/processing/rules.ts" />
       </list>
     </option>
   </component>
@@ -401,7 +398,7 @@
       <workItem from="1486064912807" duration="659000" />
       <workItem from="1486090213783" duration="9000" />
       <workItem from="1486090745647" duration="323000" />
-      <workItem from="1486091101705" duration="20463000" />
+      <workItem from="1486091101705" duration="20607000" />
     </task>
     <task id="LOCAL-00001" summary="updating changes">
       <created>1486060935318</created>
@@ -494,11 +491,18 @@
       <option name="project" value="LOCAL" />
       <updated>1486156322662</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="updated payment logic and rules">
+      <created>1486172505992</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1486172505992</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32628000" />
+    <option name="totallyTimeSpent" value="32772000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="3862" height="2182" extended-state="6" />
@@ -549,7 +553,8 @@
     <MESSAGE value="forced &quot;not active&quot; for memtype initializer" />
     <MESSAGE value="deleted bld" />
     <MESSAGE value="updated get moved it to ts code." />
-    <option name="LAST_COMMIT_MESSAGE" value="updated get moved it to ts code." />
+    <MESSAGE value="updated payment logic and rules" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated payment logic and rules" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -919,21 +924,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/processing/rules.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="79" lean-forward="false" selection-start-line="3" selection-start-column="79" selection-end-line="3" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/processing/recks.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="783">
-          <caret line="68" column="2" lean-forward="false" selection-start-line="68" selection-start-column="2" selection-end-line="68" selection-end-column="2" />
+        <state relative-caret-position="638">
+          <caret line="63" column="5" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
           <folding>
             <element signature="e#15#48#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/processing/rules.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

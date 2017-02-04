@@ -8,7 +8,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const cradle = require("cradle");
-const rules_1 = require("./rules");
 class Recks {
     addMonths(date, count) {
         if (date == null)
@@ -122,19 +121,19 @@ class Recks {
                 if (member.payments != null && member.payments.length > 0) {
                     let total = 1;
                     // lets determin when and what was the last payment.
-                    let pay = this.getLastPayment(member.payments);
-                    // now find rule that it applies to
-                    for (let r of rules_1.rules) {
-                        if (r.TermInMonths > 0) {
-                            thist = this.addMonths(tnow, r.TermInMonths * -1);
-                            let rd = new Date(pay.receivedDate);
-                            if (new Date(r.expDate) > rd && r.Amount <= pay.amount && rd > thist) {
-                                //this is the rule we should use.
-                                member.memType = r.MembershipType;
-                                member.isActive = true;
+                    /*    let pay = this.getLastPayment(member.payments);
+                        // now find rule that it applies to
+                        for (let r of rules) {
+                            if(r.TermInMonths > 0) {
+                                thist = this.addMonths(tnow, r.TermInMonths * -1)
+                                let rd = new Date(pay.receivedDate);
+                                if (new Date(r.expDate) > rd && r.Amount <= pay.amount && rd > thist) {
+                                    //this is the rule we should use.
+                                    member.memType = r.MembershipType;
+                                    member.isActive = true;
+                                }
                             }
-                        }
-                    }
+                        }*/
                     /* this.payloop.push(member);
                     for (let mypay of member.payments) {
                         thist = this.addMonths(tnow, r.TermInMonths * -1)

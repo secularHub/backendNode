@@ -128,7 +128,7 @@ export class Recks{
             if (member.payments != null && member.payments.length > 0) {
                 let total = 1;
                 // lets determin when and what was the last payment.
-                let pay = this.getLastPayment(member.payments);
+            /*    let pay = this.getLastPayment(member.payments);
                 // now find rule that it applies to
                 for (let r of rules) {
                     if(r.TermInMonths > 0) {
@@ -140,8 +140,8 @@ export class Recks{
                             member.isActive = true;
                         }
                     }
-                }
-                    /* this.payloop.push(member);
+                }*/
+                     this.payloop.push(member);
                     for (let mypay of member.payments) {
                         thist = this.addMonths(tnow, r.TermInMonths * -1)
                     if(mypay.receivedDate != undefined) {
@@ -154,7 +154,7 @@ export class Recks{
                         member.isActive = true;
                         this.elseloop.push(member);
                         member.memType = r.MembershipType;
-                    }*/
+                    }
                 if (member.memType === "Not Active")
                     member.isActive = false;
                 }

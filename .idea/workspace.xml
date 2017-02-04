@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="169ac466-7c10-42e8-be13-0fbebab7a780" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bld/rules.js" afterPath="$PROJECT_DIR$/bld/rules.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bld/rules.js.map" afterPath="$PROJECT_DIR$/bld/rules.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/processing/rules.ts" afterPath="$PROJECT_DIR$/processing/rules.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bld/recks.js" afterPath="$PROJECT_DIR$/bld/recks.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bld/recks.js.map" afterPath="$PROJECT_DIR$/bld/recks.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/processing/recks.ts" afterPath="$PROJECT_DIR$/processing/recks.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -33,7 +33,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rules.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="rules.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/processing/rules.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
@@ -53,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="recks.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="recks.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/processing/recks.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
-              <caret line="63" column="5" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+            <state relative-caret-position="1155">
+              <caret line="156" column="21" lean-forward="false" selection-start-line="143" selection-start-column="0" selection-end-line="156" selection-end-column="21" />
               <folding>
                 <element signature="e#15#48#0" expanded="true" />
               </folding>
@@ -151,8 +151,8 @@
         <option value="$PROJECT_DIR$/process-routes.js" />
         <option value="$PROJECT_DIR$/anonymous-routes.js" />
         <option value="$PROJECT_DIR$/processing/reconcile.ts" />
-        <option value="$PROJECT_DIR$/processing/recks.ts" />
         <option value="$PROJECT_DIR$/processing/rules.ts" />
+        <option value="$PROJECT_DIR$/processing/recks.ts" />
       </list>
     </option>
   </component>
@@ -398,7 +398,7 @@
       <workItem from="1486064912807" duration="659000" />
       <workItem from="1486090213783" duration="9000" />
       <workItem from="1486090745647" duration="323000" />
-      <workItem from="1486091101705" duration="20607000" />
+      <workItem from="1486091101705" duration="21253000" />
     </task>
     <task id="LOCAL-00001" summary="updating changes">
       <created>1486060935318</created>
@@ -498,11 +498,18 @@
       <option name="project" value="LOCAL" />
       <updated>1486172505992</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="re-arranged rules">
+      <created>1486172645504</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1486172645504</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32772000" />
+    <option name="totallyTimeSpent" value="33418000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="3862" height="2182" extended-state="6" />
@@ -554,7 +561,8 @@
     <MESSAGE value="deleted bld" />
     <MESSAGE value="updated get moved it to ts code." />
     <MESSAGE value="updated payment logic and rules" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated payment logic and rules" />
+    <MESSAGE value="re-arranged rules" />
+    <option name="LAST_COMMIT_MESSAGE" value="re-arranged rules" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -916,6 +924,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/processing/rules.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/processing/reconcile.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
@@ -926,19 +942,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/processing/recks.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="63" column="5" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+        <state relative-caret-position="1155">
+          <caret line="156" column="21" lean-forward="false" selection-start-line="143" selection-start-column="0" selection-end-line="156" selection-end-column="21" />
           <folding>
             <element signature="e#15#48#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/processing/rules.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>

@@ -3,6 +3,7 @@
 import * as cradle from "cradle";
 import {Member} from "./member";
 import {rules} from "./rules";
+import {Payment} from "./payment";
 
 export class Recks{
     public addMonths (date: Date, count: number): Date {
@@ -52,7 +53,7 @@ export class Recks{
         this.members = new Array<Member>();
         for (let i = 0; i < gots.length; i++) {
             await this.popMember(gots[i]);
-            console.log("l:" + i + "-" + gots.length);
+//            console.log("l:" + i + "-" + gots.length);
             if(i == gots.length - 1)
                 this.processMembers();
         }
@@ -65,7 +66,7 @@ export class Recks{
         this.members = new Array<Member>();
         for (let i = 0; i < gots.length; i++) {
             await this.popMember(gots[i]);
-            console.log("l:" + i + "-" + gots.length);
+//            console.log("l:" + i + "-" + gots.length);
             if(i === gots.length - 1)
                 res.status(200).send(JSON.stringify(this.members));
         }
@@ -84,7 +85,7 @@ export class Recks{
       });
   }
   public reconcileAll(){
-        this.db = new(cradle.Connection)("foxjazz.org").database("members");
+        this.db = new(cradle.Connection)().database("members");
         this.db.all( (err: any, rs: any) => {
             if (err) {
                 console.dir(err);
@@ -98,6 +99,14 @@ export class Recks{
   private forloop: Array<Member>;
   private elseloop: Array<Member>;
 
+  private getLastPayment(p: Array<Payment>): Payment{
+      let rp = p[p.length - 1];
+      for(let i = 0; i < p.length; i++){
+          if(rp.receivedDate < p[i].receivedDate)
+              rp = p[i];
+      }
+      return rp;
+  }
   public processMembers(){
       this.forloop = new Array<Member>();
       this.payloop = new Array<Member>();
@@ -118,22 +127,36 @@ export class Recks{
             member.memType = "Not Active";
             if (member.payments != null && member.payments.length > 0) {
                 let total = 1;
-                this.payloop.push(member);
-                for (let mypay of member.payments) {
-                if(mypay.receivedDate != undefined) {
-                    if (new Date(mypay.receivedDate) > thist)
-                    total = total + mypay.amount;
-                }
-                }
+                // lets determin when and what was the last payment.
+                let pay = this.getLastPayment(member.payments);
+                // now find rule that it applies to
                 for (let r of rules) {
-                if (total > r.Amount) {
-                    member.isActive = true;
-                    this.elseloop.push(member);
-                    member.memType = r.MembershipType;
+                    if(r.TermInMonths > 0) {
+                        thist = this.addMonths(tnow, r.TermInMonths * -1)
+                        let rd = new Date(pay.receivedDate);
+                        if (new Date(r.expDate) > rd && r.Amount <= pay.amount && rd > thist) {
+                            //this is the rule we should use.
+                            member.memType = r.MembershipType;
+                            member.isActive = true;
+                        }
+                    }
                 }
-                }
+                    /* this.payloop.push(member);
+                    for (let mypay of member.payments) {
+                        thist = this.addMonths(tnow, r.TermInMonths * -1)
+                    if(mypay.receivedDate != undefined) {
+                        if (new Date(mypay.receivedDate) > thist)
+                        total = total + mypay.amount;
+                    }
+                    }
+                    for (let r of rules) {
+                    if (total > r.Amount) {
+                        member.isActive = true;
+                        this.elseloop.push(member);
+                        member.memType = r.MembershipType;
+                    }*/
                 if (member.memType === "Not Active")
-                member.isActive = false;
+                    member.isActive = false;
                 }
             }
 

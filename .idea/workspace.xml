@@ -3,13 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="169ac466-7c10-42e8-be13-0fbebab7a780" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/anonymous-routes.js" afterPath="$PROJECT_DIR$/anonymous-routes.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bld/recks.js" afterPath="$PROJECT_DIR$/bld/recks.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bld/recks.js.map" afterPath="$PROJECT_DIR$/bld/recks.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bld/reconcile.js" afterPath="$PROJECT_DIR$/bld/reconcile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bld/reconcile.js.map" afterPath="$PROJECT_DIR$/bld/reconcile.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bld/rules.js" afterPath="$PROJECT_DIR$/bld/rules.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bld/rules.js.map" afterPath="$PROJECT_DIR$/bld/rules.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/processing/recks.ts" afterPath="$PROJECT_DIR$/processing/recks.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/processing/reconcile.ts" afterPath="$PROJECT_DIR$/processing/reconcile.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/processing/rules.ts" afterPath="$PROJECT_DIR$/processing/rules.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -40,8 +39,8 @@
       <file leaf-file-name="rules.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/processing/rules.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="75">
+              <caret line="3" column="79" lean-forward="false" selection-start-line="3" selection-start-column="79" selection-end-line="3" selection-end-column="79" />
               <folding />
             </state>
           </provider>
@@ -60,8 +59,8 @@
       <file leaf-file-name="recks.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/processing/recks.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1073">
-              <caret line="70" column="9" lean-forward="true" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
+            <state relative-caret-position="783">
+              <caret line="68" column="2" lean-forward="false" selection-start-line="68" selection-start-column="2" selection-end-line="68" selection-end-column="2" />
               <folding>
                 <element signature="e#15#48#0" expanded="true" />
               </folding>
@@ -155,6 +154,7 @@
         <option value="$PROJECT_DIR$/process-routes.js" />
         <option value="$PROJECT_DIR$/anonymous-routes.js" />
         <option value="$PROJECT_DIR$/processing/reconcile.ts" />
+        <option value="$PROJECT_DIR$/processing/rules.ts" />
         <option value="$PROJECT_DIR$/processing/recks.ts" />
       </list>
     </option>
@@ -401,7 +401,7 @@
       <workItem from="1486064912807" duration="659000" />
       <workItem from="1486090213783" duration="9000" />
       <workItem from="1486090745647" duration="323000" />
-      <workItem from="1486091101705" duration="14669000" />
+      <workItem from="1486091101705" duration="20463000" />
     </task>
     <task id="LOCAL-00001" summary="updating changes">
       <created>1486060935318</created>
@@ -487,11 +487,18 @@
       <option name="project" value="LOCAL" />
       <updated>1486154511662</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="updated get moved it to ts code.">
+      <created>1486156322662</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1486156322662</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26834000" />
+    <option name="totallyTimeSpent" value="32628000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="3862" height="2182" extended-state="6" />
@@ -506,9 +513,9 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32938755" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938755" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35666496" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35666496" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -541,27 +548,27 @@
     <MESSAGE value="modified payment logging" />
     <MESSAGE value="forced &quot;not active&quot; for memtype initializer" />
     <MESSAGE value="deleted bld" />
-    <option name="LAST_COMMIT_MESSAGE" value="deleted bld" />
+    <MESSAGE value="updated get moved it to ts code." />
+    <option name="LAST_COMMIT_MESSAGE" value="updated get moved it to ts code." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/processing/recks.ts</url>
-          <line>56</line>
+          <line>115</line>
           <properties />
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/processing/recks.ts</url>
-          <line>105</line>
-          <properties />
-          <option name="timeStamp" value="10" />
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="11" />
+      <option name="time" value="23" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="NodeJSConfigurationType">
+        <watch expression="pay" language="TypeScript" />
+        <watch expression="r" language="TypeScript" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/processing/reconcile.ts">
@@ -872,14 +879,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/processing/rules.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
@@ -920,10 +919,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/processing/rules.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="79" lean-forward="false" selection-start-line="3" selection-start-column="79" selection-end-line="3" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/processing/recks.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1073">
-          <caret line="70" column="9" lean-forward="true" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
+        <state relative-caret-position="783">
+          <caret line="68" column="2" lean-forward="false" selection-start-line="68" selection-start-column="2" selection-end-line="68" selection-end-column="2" />
           <folding>
             <element signature="e#15#48#0" expanded="true" />
           </folding>

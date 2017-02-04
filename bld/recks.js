@@ -49,7 +49,7 @@ class Recks {
             this.members = new Array();
             for (let i = 0; i < gots.length; i++) {
                 yield this.popMember(gots[i]);
-                console.log("l:" + i + "-" + gots.length);
+                //            console.log("l:" + i + "-" + gots.length);
                 if (i == gots.length - 1)
                     this.processMembers();
             }
@@ -62,7 +62,7 @@ class Recks {
             this.members = new Array();
             for (let i = 0; i < gots.length; i++) {
                 yield this.popMember(gots[i]);
-                console.log("l:" + i + "-" + gots.length);
+                //            console.log("l:" + i + "-" + gots.length);
                 if (i === gots.length - 1)
                     res.status(200).send(JSON.stringify(this.members));
             }
@@ -82,7 +82,7 @@ class Recks {
         });
     }
     reconcileAll() {
-        this.db = new (cradle.Connection)("foxjazz.org").database("members");
+        this.db = new (cradle.Connection)().database("members");
         this.db.all((err, rs) => {
             if (err) {
                 console.dir(err);
@@ -92,6 +92,14 @@ class Recks {
                 let cb = this.getAllMembers(gots);
             }
         });
+    }
+    getLastPayment(p) {
+        let rp = p[p.length - 1];
+        for (let i = 0; i < p.length; i++) {
+            if (rp.receivedDate < p[i].receivedDate)
+                rp = p[i];
+        }
+        return rp;
     }
     processMembers() {
         this.forloop = new Array();
@@ -113,20 +121,34 @@ class Recks {
                 member.memType = "Not Active";
                 if (member.payments != null && member.payments.length > 0) {
                     let total = 1;
-                    this.payloop.push(member);
-                    for (let mypay of member.payments) {
-                        if (mypay.receivedDate != undefined) {
-                            if (new Date(mypay.receivedDate) > thist)
-                                total = total + mypay.amount;
-                        }
-                    }
+                    // lets determin when and what was the last payment.
+                    let pay = this.getLastPayment(member.payments);
+                    // now find rule that it applies to
                     for (let r of rules_1.rules) {
-                        if (total > r.Amount) {
-                            member.isActive = true;
-                            this.elseloop.push(member);
-                            member.memType = r.MembershipType;
+                        if (r.TermInMonths > 0) {
+                            thist = this.addMonths(tnow, r.TermInMonths * -1);
+                            let rd = new Date(pay.receivedDate);
+                            if (new Date(r.expDate) > rd && r.Amount <= pay.amount && rd > thist) {
+                                //this is the rule we should use.
+                                member.memType = r.MembershipType;
+                                member.isActive = true;
+                            }
                         }
                     }
+                    /* this.payloop.push(member);
+                    for (let mypay of member.payments) {
+                        thist = this.addMonths(tnow, r.TermInMonths * -1)
+                    if(mypay.receivedDate != undefined) {
+                        if (new Date(mypay.receivedDate) > thist)
+                        total = total + mypay.amount;
+                    }
+                    }
+                    for (let r of rules) {
+                    if (total > r.Amount) {
+                        member.isActive = true;
+                        this.elseloop.push(member);
+                        member.memType = r.MembershipType;
+                    }*/
                     if (member.memType === "Not Active")
                         member.isActive = false;
                 }
